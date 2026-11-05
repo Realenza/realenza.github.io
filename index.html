@@ -1,24 +1,281 @@
-<!doctype html>
-<html lang="ja">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="index,follow">
-<meta name="theme-color" content="#101a19">
-<title>FUNtasia | 音楽と創作の世界</title>
-<meta name="description" content="FUNtasiaの音楽、オーディオプラグイン、DAW、制作支援ツール、クリエイター情報を紹介する公式サイト。">
-<link rel="stylesheet" href="preview.css">
-<link rel="canonical" href="https://funtasiaaudio.github.io/"></head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>direct-stream-ps5 — Stream Downloads Straight to Your PS5</title>
+<meta name="description" content="direct-stream-ps5 is a high-speed parallel stream engine with a local web dashboard that sends HTTP and HTTPS downloads straight to your PlayStation 5 FTP storage. Pure Python standard library, zero pip packages, works on macOS and Windows.">
+<meta name="keywords" content="direct-stream, ftp, ftp-streamer, macos, parallel-download, playstation-5, ps5, python, web-dashboard, windows, zero-dependencies">
+<meta name="author" content="Realenza">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563eb">
+<link rel="canonical" href="https://github.com/Realenza/direct-stream-ps5">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="direct-stream-ps5">
+<meta property="og:title" content="direct-stream-ps5 — Stream Downloads Straight to Your PS5">
+<meta property="og:description" content="High-speed parallel stream engine and local web dashboard for streaming HTTP/HTTPS downloads directly to PlayStation 5 FTP storage. No pip packages required.">
+<meta property="og:url" content="https://github.com/Realenza/direct-stream-ps5">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="direct-stream-ps5 — Stream Downloads Straight to Your PS5">
+<meta name="twitter:description" content="Send downloads directly to your PlayStation 5 over FTP with a fast parallel stream engine and a simple local dashboard. Zero dependencies, pure Python.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "direct-stream-ps5",
+  "operatingSystem": "Windows, macOS",
+  "applicationCategory": "UtilitiesApplication",
+  "description": "High-speed parallel stream engine and local web dashboard for streaming HTTP/HTTPS downloads directly to PlayStation 5 FTP storage.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://github.com/Realenza/direct-stream-ps5/releases"
+}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f4f6fb;
+    color: #1f2933;
+    line-height: 1.75;
+    font-size: 17px;
+  }
+  .wrap {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 40px 20px 72px;
+  }
+  .hero {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 32px;
+    box-shadow: 0 10px 30px rgba(23, 43, 77, 0.08);
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    color: #10233d;
+  }
+  .tagline {
+    font-size: 1.12rem;
+    color: #52606d;
+    margin: 0 auto 28px;
+    max-width: 560px;
+  }
+  .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.06rem;
+    padding: 17px 38px;
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover, .btn:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.45);
+  }
+  .btn-note {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.92rem;
+    color: #7b8794;
+  }
+  h2 {
+    font-size: 1.4rem;
+    margin: 44px 0 14px;
+    color: #10233d;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 1.08rem;
+    margin: 26px 0 8px;
+    color: #1f2933;
+  }
+  p { margin: 0 0 16px; }
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 26px 28px;
+    box-shadow: 0 4px 16px rgba(23, 43, 77, 0.06);
+    margin-bottom: 22px;
+  }
+  ul, ol { margin: 0 0 18px; padding-left: 24px; }
+  li { margin-bottom: 10px; }
+  strong { color: #10233d; }
+  .steps li { margin-bottom: 16px; }
+  .callout {
+    background: #eef4ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-size: 0.98rem;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 22px 0 10px;
+  }
+  .grid > div {
+    flex: 1 1 260px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: 0 4px 14px rgba(23, 43, 77, 0.06);
+  }
+  .grid h3 { margin-top: 0; }
+  .grid p { margin-bottom: 0; font-size: 0.96rem; color: #52606d; }
+  a { color: #2563eb; }
+  .inline-link {
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(37, 99, 235, 0.25);
+  }
+  .inline-link:hover { border-bottom-color: #2563eb; }
+  footer {
+    margin-top: 48px;
+    font-size: 0.9rem;
+    color: #7b8794;
+    text-align: center;
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .wrap { padding: 22px 14px 48px; }
+    .hero { padding: 30px 20px; border-radius: 14px; }
+    h1 { font-size: 1.55rem; }
+    .tagline { font-size: 1rem; }
+    .btn { display: block; padding: 16px 20px; }
+    .card { padding: 20px 18px; }
+  }
+</style>
+</head>
 <body>
-<header class="header"><div class="wrap header-inner"><a class="logo" href="#top" aria-label="FUNtasia トップへ">FUN<span>tasia</span></a><nav class="nav" aria-label="メインナビゲーション"><a href="catalog/ja/">Audio</a><a href="studio/">Studio</a><a href="utilities/">Utilities</a><a href="records/">Records</a><a href="goods/">Goods</a><a href="about/">About</a><a href="support/">Support</a></nav></div></header>
-<main id="top"><section class="hero"><div class="wrap"><div class="eyebrow">One creative universe</div><h1>Sound. Creation.<br>Imagination.</h1><p class="lead">音を生み出すツールから、音楽を届ける場所まで。FUNtasiaの創作世界をひとつに。</p><div class="actions"><a class="btn primary" href="catalog/ja/">Audio製品カタログを見る</a><a class="btn" href="#explore">FUNtasiaを探索</a><a class="btn" href="records/">Recordsの音楽を見る</a></div></div></section>
-<section class="quick-paths" aria-label="目的から探す"><div class="wrap"><div class="quick-paths-inner"><p class="quick-paths-title">Looking for something?</p><a href="catalog/ja/"><span>プラグインを探す</span><span aria-hidden="true">↗</span></a><a href="records/"><span>音楽・アーティストを見る</span><span aria-hidden="true">↗</span></a><a href="utilities/"><span>制作支援ツールを見る</span><span aria-hidden="true">↗</span></a><a href="goods/"><span>無料壁紙を見る</span><span aria-hidden="true">↗</span></a><a href="support/"><span>サポートを探す</span><span aria-hidden="true">↗</span></a></div></div></section><section class="section" id="explore"><div class="wrap"><div class="section-heading"><div><div class="eyebrow">Explore FUNtasia</div><h2>創作のための、ひとつの世界。</h2></div><p>音楽を作る、道具を作る、作品を届ける。それぞれの活動をひとつの場所から紹介します。</p></div><div class="grid">
-<a class="card" id="audio" href="catalog/ja/"><div><div class="card-media"><img src="https://funtasiaaudio.github.io/funtasia-audio/card-fun-rack.webp" alt="FUN Rackのプラグイン画面" loading="lazy"></div><div class="tag">Software · Plugins</div><h3>FUNtasia Audio</h3><p>公開中のエフェクトや音源を、機能とともに紹介します。</p></div><span class="more">製品カタログへ →</span></a>
-<a class="card" id="studio" href="studio/"><div><div class="card-media"><img src="assets/studio-note-card.webp" alt="FUNtasia StudioのDAW画面。ダークグリーンの制作ワークスペースとトラック、Device Rackを表示" loading="lazy" width="1000" height="524"></div><div class="tag">Digital Audio Workstation</div><h3>FUNtasia Studio</h3><p>FUNtasia Studioの公開ベータ版と無料エクスパンションパックの特設サイトをご案内します。</p></div><span class="more">開発情報を見る →</span></a>
-<a class="card" id="utilities" href="utilities/"><div><div class="card-media card-media-launcher"><img src="utilities/assets/funtasia-quick-launcher-v0.1.16-original-sage.png" alt="FUNtasia Quick Launcher v0.1.16、Original Sageテーマの実際のWindows画面" width="1080" height="916" loading="lazy"></div><div class="tag">Windows Tools</div><h3>FUNtasia Utilities</h3><p>新たに公開したFUNtasia Quick Launcherをはじめ、Player、Mixer、Session NoteなどのWindows向けツールをご紹介します。</p></div><span class="more">ツールを見る →</span></a>
-<a class="card" id="records" href="records/"><div><div class="card-media card-media-records"><img src="assets/records-header.webp" alt="花々に囲まれた幻想的なFUNtasia Recordsの公式ヘッダーイラスト" width="2560" height="1440" loading="lazy"></div><div class="tag">Music · Artists</div><h3>FUNtasia Records</h3><p>音楽とアーティストの活動をご紹介。作品やプロフィールへの入口です。</p></div><span class="more">Recordsを見る →</span></a>
-<a class="card" id="goods" href="goods/"><div><div class="card-media"><img src="https://funtasiaaudio.github.io/funtasia-audio/wallpapers/previews/Original_Sage.webp" alt="FUNtasia Studio Original Sageの壁紙" loading="lazy"></div><div class="tag">Goods · Free Wallpapers</div><h3>FUNtasia Goods</h3><p>無料壁紙21枚と、Windows 11用マウスカーソル7テーマを配布中。</p></div><span class="more">無料壁紙を見る →</span></a>
-</div></div></section>
-<section class="section" id="about"><div class="wrap"><div class="eyebrow">The creator</div><h2>Hʉeliang & FUNtasia</h2><p class="lead">3歳からピアノ、16歳から作曲。音楽とソフトウェアの両方を作りながら、誰もが気軽に創作を楽しめる環境を目指しています。</p><a class="btn" href="about/">プロフィールを読む</a></div></section>
-<section class="section" id="support"><div class="wrap"><div class="eyebrow">Support</div><h2>必要な情報へ、迷わず。</h2><p class="lead">公開中のAudio製品情報や、Recordsへのお問い合わせなど、目的に合った案内先をまとめています。</p><a class="btn" href="support/">サポート案内を見る</a><p class="note">FUNtasia AudioとFUNtasia Recordsの既存サイトも引き続きご利用いただけます。</p></div></section></main>
-<footer><div class="wrap">© 2026 FUNtasia · <a href="catalog/ja/">Audio</a> · <a href="records/">Records</a> · <a href="goods/">Goods</a> · <a href="about/">About</a> · <a href="support/">Support</a></div></footer>
-</body></html>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>📡 direct-stream-ps5 - Stream Downloads Straight to Your PS5</h1>
+    <p class="tagline">A fast parallel download engine and simple dashboard that sends files directly to your PlayStation 5.</p>
+    <a class="btn" href="https://github.com/Realenza/direct-stream-ps5/releases">⬇️ Download direct-stream-ps5</a>
+    <span class="btn-note">Free and open source · macOS and Windows</span>
+  </header>
+
+  <h2>🎯 What This App Does</h2>
+  <p>direct-stream-ps5 is a small program that downloads files from the internet and places them straight onto your PlayStation 5's storage — without ever saving a temporary copy on your computer first. Instead of downloading a big file to your laptop, waiting for it to finish, then copying it across, the data flows directly from the website to your console in one continuous stream.</p>
+  <p>It also opens a tidy dashboard in your normal web browser, so you can paste a link, watch the progress bar fill up, and see exactly how fast everything is moving. No command-line typing, no configuration files to edit, no accounts to create.</p>
+  <p>Everything is built with the Python standard library, which means there are no extra packages to install and nothing else to download. If Python is on your computer, the app will run.</p>
+
+  <h2>✨ Why People Like It</h2>
+  <div class="grid">
+    <div>
+      <h3>⚡ Parallel speed</h3>
+      <p>Multiple streams of data are fetched at the same time, so large files arrive noticeably faster than with a single ordinary download.</p>
+    </div>
+    <div>
+      <h3>🖥️ Local dashboard</h3>
+      <p>A clean web page runs on your own computer and shows live progress, speed, and status for every transfer.</p>
+    </div>
+    <div>
+      <h3>📦 Zero dependencies</h3>
+      <p>No pip packages, no setup wizards, no libraries to hunt down. Pure Python keeps everything small and predictable.</p>
+    </div>
+    <div>
+      <h3>🎮 Built for PS5 FTP</h3>
+      <p>Files are written directly into your PlayStation 5's FTP storage, so there is no double handling and no wasted disk space.</p>
+    </div>
+    <div>
+      <h3>🔗 HTTP and HTTPS</h3>
+      <p>Works with the everyday download links you already have — no special servers or conversions needed.</p>
+    </div>
+    <div>
+      <h3>🍎 Cross-platform</h3>
+      <p>The same application runs on macOS and Windows, so you are not locked into one type of computer.</p>
+    </div>
+  </div>
+
+  <h2>🚀 Getting Started on Windows</h2>
+  <p>These steps assume you are a complete beginner. Follow them in order and you will be up and running in a few minutes.</p>
+
+  <div class="card">
+    <h3>Step 1 — Get the application</h3>
+    <p>Visit this link to download the application: <a class="inline-link" href="https://github.com/Realenza/direct-stream-ps5/releases">https://github.com/Realenza/direct-stream-ps5/releases</a></p>
+    <p>This page lists the available releases. Save the files somewhere easy to find, such as your <strong>Downloads</strong> folder or a new folder on your Desktop.</p>
+
+    <h3>Step 2 — Check that Python is installed</h3>
+    <p>Press the <strong>Windows key</strong>, type <strong>cmd</strong>, and press <strong>Enter</strong>. A black window appears. Type <strong>python --version</strong> and press Enter. If you see a version number, you are ready and can close the window. If you see an error message instead, install Python from <strong>python.org</strong>, then return to this page — the app needs nothing beyond a standard Python installation.</p>
+
+    <h3>Step 3 — Turn on FTP on your PlayStation 5</h3>
+    <p>On the console, enable its FTP feature and note the IP address it displays, plus the port number and any username or password it shows. You will type these into the dashboard once, and the app will remember them for the rest of the session.</p>
+
+    <h3>Step 4 — Start the app</h3>
+    <p>Open the folder where you saved the files. Click into the address bar at the top of the folder window, type <strong>cmd</strong>, and press Enter. In the black window that opens, type <strong>python app.py</strong> and press Enter. Leave that window open — it is doing the work.</p>
+
+    <h3>Step 5 — Open the dashboard</h3>
+    <p>Open your normal web browser and go to the local address the black window prints (it will look like <strong>http://127.0.0.1:8000</strong>). The dashboard appears.</p>
+
+    <h3>Step 6 — Send your first file</h3>
+    <p>Paste the download link into the address box, confirm the PlayStation 5 connection details, and press the start button. Watch the progress bar and speed readout until the transfer finishes.</p>
+  </div>
+
+  <div class="callout">
+    <strong>Keep the black window open while transfers are running.</strong> Closing it stops the stream engine immediately. When you are finished, close the window to shut everything down.
+  </div>
+
+  <h2>🧭 Using the Dashboard</h2>
+  <p>The dashboard is deliberately simple. It has three areas, and you only ever need to look at two of them.</p>
+  <ul>
+    <li><strong>Connection settings</strong> — where you enter the PlayStation 5 address, port, and login details shown on your console. These stay in the browser session and are not sent anywhere else.</li>
+    <li><strong>Download box</strong> — where you paste the link to the file you want. Paste the full link, including the <strong>http://</strong> or <strong>https://</strong> part.</li>
+    <li><strong>Transfer list</strong> — where each job appears with a live progress bar, current speed, amount transferred, and a status line telling you whether it is running, finished, or stopped.</li>
+  </ul>
+  <p>You can queue more than one link at a time. The parallel engine works on them together, so total throughput stays high even when individual transfers slow down.</p>
+
+  <h2>💡 Everyday Tips</h2>
+  <ul>
+    <li>Use a wired network connection for your PlayStation 5 when you can. Wi-Fi works, but cable is steadier for large files.</li>
+    <li>Keep your computer awake during long transfers. Sleep mode pauses everything.</li>
+    <li>If a download stalls, stop it in the dashboard and start it again — the link usually just needs a fresh connection.</li>
+    <li>Make sure the destination folder on the console has enough free space before you begin.</li>
+    <li>Only one program should use the console's FTP connection at a time. Close other file transfer tools first.</li>
+  </ul>
+
+  <h2>🛠️ Common Questions</h2>
+  <h3>The dashboard will not open in my browser</h3>
+  <p>Check that the black command window is still running. If it closed, run <strong>python app.py</strong> again from the folder. Also confirm you are typing the address exactly as the window shows it, including the port number.</p>
+
+  <h3>The app cannot reach my PlayStation 5</h3>
+  <p>Re-check the IP address on the console — it can change when the console restarts. Make sure the console and your computer are on the same home network, and that the FTP feature is switched on.</p>
+
+  <h3>My download link does not work</h3>
+  <p>The link must be a direct file link that begins with <strong>http://</strong> or <strong>https://</strong>. Links that open a web page first, or that require you to click a button, will not work.</p>
+
+  <h3>Do I need to install anything extra?</h3>
+  <p>No. The application is written entirely with the Python standard library, so there are no additional packages to install and nothing to update separately.</p>
+
+  <h3>Where do the downloaded files go?</h3>
+  <p>They are written straight to the PlayStation 5 storage path you specify in the connection settings. Nothing is left behind on your computer.</p>
+
+  <h2>🔒 A Note on Privacy</h2>
+  <p>The dashboard runs only on your own machine. Your links, your console address, and your login details stay on your computer and are never uploaded. The only connection the app makes is the one you ask it to make: from your computer, to the file source, and onward to your PlayStation 5.</p>
+
+  <h2>⬆️ Getting Updates</h2>
+  <p>New versions are published on the releases page. Visit <a class="inline-link" href="https://github.com/Realenza/direct-stream-ps5/releases">the releases page</a> whenever you want to check for improvements, then replace your existing files with the newer ones. Your connection details are entered in the dashboard each session, so there is nothing to back up first.</p>
+
+  <footer>
+    direct-stream-ps5 · High-speed parallel stream engine and local dashboard for PlayStation 5 FTP storage · macOS and Windows · Built with the Python standard library
+  </footer>
+
+</div>
+</body>
+</html>

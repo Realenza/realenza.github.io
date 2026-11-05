@@ -13,8 +13,24 @@
 .player-actions a:hover,.player-actions a:focus-visible{outline:2px solid #d7e8dd;outline-offset:3px}
 @media(max-width:760px){.player-theme-gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:420px){.player-theme-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.player-actions{flex-direction:column}.player-actions a{width:100%}}
+.mixer-card{grid-column:1/-1}
+.mixer-columns{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.85fr);gap:28px;align-items:start}
+.mixer-content{min-width:0}.mixer-content p{margin:10px 0}.mixer-content a{overflow-wrap:anywhere}
+.mixer-shot{width:100%;min-width:0;margin:0;text-align:center}
+.mixer-shot a{display:block;width:min(100%,390px);margin:0 auto;border:1px solid rgba(143,174,159,.4);border-radius:12px;overflow:hidden;background:#081b15}
+.mixer-shot a:hover,.mixer-shot a:focus-visible{border-color:#8fae9f}.mixer-shot a:focus-visible{outline:2px solid #8fae9f;outline-offset:3px}
+.mixer-shot img{display:block;width:100%;height:auto;object-fit:contain}
+.mixer-shot figcaption{font:12px/1.6 Arial,sans-serif;color:#a9b3a9;margin:10px 0 0}
+@media(max-width:740px){.mixer-columns{grid-template-columns:1fr;gap:20px}.mixer-shot a{width:min(100%,390px)}}
 </style></head><body><header class="top"><div class="wrap"><a class="brand" href="../">FUNtasia</a><a class="back" href="../">← 総合トップへ</a><nav class="site-nav" aria-label="サイト内ナビゲーション"><a href="../catalog/ja/">Audio</a><a href="../studio/">Studio</a><a href="./" aria-current="page">Utilities</a><a href="../records/">Records</a><a href="../goods/">Goods</a><a href="../about/">About</a><a href="../support/">Support</a></nav></div></header><main class="wrap"><section class="hero"><div class="eyebrow">FUNtasia · Utilities</div><h1>制作を支える、小さく便利なツール。</h1><p class="lead">FUNtasia Player、FUNtasia Mixer、FUNtasia Session Noteなど、公開中のWindows向けアプリをご紹介。開発中のツールは別に案内しています。</p></section><section><h2>Utilitiesのご案内</h2><div class="grid"><article class="card"><h2>日々の制作を支えるツール</h2><p>音楽制作やWindowsでの作業を快適にするユーティリティを紹介するためのページです。公開済み製品と開発中のツールを、それぞれの状態が分かるように紹介します。</p></article><article class="card"><h2>製品の公開情報</h2><p>公開状態、対応OS、バージョン、配布先を確認してから案内します。開発中のアプリについてはダウンロードを案内していません。</p><p><a href="../support/">サポートページを見る →</a></p></article></div></section><section><h2>公開済みのツール</h2><div class="grid">
-<article class="card"><span class="status">公開済み</span><h2>FUNtasia Mixer</h2><p>Windowsのオーディオ出力やアプリごとの音量操作を、使いやすくまとめるユーティリティ。</p><p><a href="https://github.com/funtasiaaudio/FUNtasia-Mixer/releases">FUNtasia Mixerのリリース・ダウンロードを見る →</a></p></article>
+<article class="card mixer-card" id="funtasia-mixer"><div class="mixer-columns"><div class="mixer-content">
+<span class="status">公開中 · v1.0.0 · Windows 11</span>
+<h2>FUNtasia Mixer</h2>
+<p>Windows 11の通知領域から使える、コンパクトなアプリ別ボリュームミキサー。アプリごとの音量調整やミュート、操作する出力デバイスの選択、よく使うアプリのピン留めに対応しています。</p>
+<p>FUNtasia Studioに合わせた7色のテーマと、Kaisei Optiを使った落ち着いたデザイン。選択した出力デバイスの音量を操作でき、Windowsの既定の出力デバイスは切り替えません。</p>
+<p><a href="https://github.com/funtasiaaudio/FUNtasia-Mixer/releases/download/v1.0.0/FUNtasia.Mixer.1.0.0.zip">FUNtasia Mixer v1.0.0をダウンロード（ZIP） →</a></p>
+<p><a href="https://github.com/funtasiaaudio/FUNtasia-Mixer/releases">リリース・更新情報を見る →</a></p>
+</div><figure class="mixer-shot"><a href="https://funtasiaaudio.github.io/funtasia-audio/assets/funtasia-mixer-v1.0.0.webp" target="_blank" rel="noopener noreferrer" aria-label="FUNtasia Mixer v1.0.0の画面を拡大表示"><img src="https://funtasiaaudio.github.io/funtasia-audio/assets/funtasia-mixer-v1.0.0.webp" width="768" height="736" loading="lazy" decoding="async" alt="Windows 11上のFUNtasia Mixer。Apogee Duet 3の出力音量、DiscordとSystem soundsのアプリ別音量スライダーを表示"></a><figcaption>FUNtasia Mixer · Original Sage（画像を拡大）</figcaption></figure></div></article>
 <article class="card player-card" id="funtasia-player"><span class="status">公開中 · v1.2.1 · Windows x64 · 無料</span><h2>FUNtasia Player</h2>
 <p class="player-intro">再生のためのシンプルなスタンドアロン・オーディオプレーヤー。Windowsからファイルを開くかドラッグ＆ドロップし、再生・停止・リピート・シーク・音量を操作できます。</p>
 <div class="player-features" aria-label="FUNtasia Playerの機能"><span>WAV / FLAC / MP3 / AIFF</span><span>ASIO / WASAPI</span><span>再生・一時停止・停止</span><span>リピート・シーク・音量</span><span>ドラッグ＆ドロップ</span><span>ファイルの関連付け</span><span>タイトル・アーティスト情報</span><span>アートワーク表示</span><span>7色テーマ</span><span>5言語マニュアル</span></div>

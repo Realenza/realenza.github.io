@@ -72,3 +72,7 @@
   #explore .card-media{aspect-ratio:16 / 9;height:auto}
   #explore .card-media-player img{width:min(42%,160px);height:auto}
 }
+
+/* Featured utility: real Quick Launcher screenshot */
+#explore .card-media-launcher{background:linear-gradient(135deg,#1a3128,#101a19)}
+#explore .card-media-launcher img{width:auto;height:100%;max-width:100%;object-fit:contain}

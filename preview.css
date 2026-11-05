@@ -53,9 +53,15 @@
   object-position:center;
 }
 #explore .card-media-player img{
-  width:auto;
-  height:64%;
-  max-width:72%;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:min(42%,190px);
+  height:auto;
+  aspect-ratio:1 / 1;
+  max-width:calc(100% - 36px);
+  max-height:calc(100% - 32px);
   object-fit:contain;
 }
 #explore .card h3{font-size:clamp(1.52rem,2vw,1.83rem)}
@@ -64,5 +70,5 @@
 #explore .card .more{font-size:.9rem}
 @media(max-width:680px){
   #explore .card-media{aspect-ratio:16 / 9;height:auto}
-  #explore .card-media-player img{height:64%}
+  #explore .card-media-player img{width:min(42%,160px);height:auto}
 }

@@ -25,3 +25,8 @@
 
 /* Homepage discovery shortcuts */
 .quick-paths{border-top:1px solid var(--line);background:#14201d}.quick-paths-inner{display:grid;grid-template-columns:1.1fr repeat(4,1fr);align-items:stretch}.quick-paths-title{margin:0;padding:20px 16px 20px 0;color:var(--light);font:500 .7rem/1.6 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;align-self:center}.quick-paths a{display:flex;align-items:center;justify-content:space-between;gap:10px;border-left:1px solid var(--line);padding:18px 14px;color:var(--ivory);font-size:.83rem;line-height:1.5}.quick-paths a span:last-child{color:var(--light);font-family:Arial,sans-serif}.quick-paths a:hover,.quick-paths a:focus-visible{background:#1d2c29}.quick-paths a:focus-visible{outline:2px solid var(--light);outline-offset:-2px}footer a{color:var(--light);text-decoration:underline;text-underline-offset:4px}@media(max-width:900px){.quick-paths-inner{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-paths-title{grid-column:1/-1;padding:17px 0 10px}.quick-paths a{border-top:1px solid var(--line);padding:15px 12px}.quick-paths a:nth-of-type(odd){border-left:0}}@media(max-width:480px){.quick-paths-inner{grid-template-columns:1fr}.quick-paths a{border-left:0;padding:13px 2px}.quick-paths-title{padding-bottom:8px}}
+
+/* Original FUNtasia Player art and Records banner on homepage cards */
+.card-media-player{background:radial-gradient(circle at 50% 45%,#365c4d 0%,#1b3028 60%,#101a19 100%)}
+.card-media-player img{width:auto;height:77%;max-width:85%;object-fit:contain;filter:none}
+.card-media-records img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;filter:none}
